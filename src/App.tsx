@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeProvider } from './components/ThemeProvider'; 
+import { ThemeProvider } from './components/ThemeProvider';
 import { LanguageProvider, useLanguage } from './components/LanguageProvider';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
@@ -16,7 +16,7 @@ import { FloatingButtons } from './components/FloatingButtons';
 // Apple-style Loading Component
 function AppleLoadingScreen() {
   const { t } = useLanguage();
-  
+
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center bg-background"
@@ -90,7 +90,7 @@ function ApplePageTransition({ children }: { children: React.ReactNode }) {
       }}
       exit={{ 
         opacity: 0, 
-        y: -10,
+        y: -10, 
         scale: 1.02
       }}
       transition={{ 
@@ -102,6 +102,7 @@ function ApplePageTransition({ children }: { children: React.ReactNode }) {
     </motion.div>
   );
 }
+
 
 function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
@@ -147,7 +148,8 @@ function AppContent() {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.23, 1, 0.32, 1]
+        ease: [0.23, 1, 0.32, 1] as [number, number, number, number]
+
       }
     }
   };
@@ -160,7 +162,7 @@ function AppContent() {
 
       <AnimatePresence>
         {!isLoading && (
-          <ApplePageTransition>
+          <ApplePageTransition key="main">
             {/* Header with absolute positioning to not interfere with hero */}
             <div className="relative z-50">
               <Header />
