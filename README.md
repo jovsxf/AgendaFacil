@@ -1,1 +1,1 @@
-npm install framer-motion
+projeto sendo desenvolvido na organização S204
